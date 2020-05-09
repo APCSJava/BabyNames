@@ -1,4 +1,4 @@
 # BabyNames
-Exercises for working with one and multi-dimensional arrays (and lists, probably)
+Big data exercises to help develop proficiency working with arrays and lists
 
-Data culled from US Social Security office located at https://www.ssa.gov/oact/babynames/limits.html
+Data scraped from US Social Security office located at https://www.ssa.gov/oact/babynames/limits.html
