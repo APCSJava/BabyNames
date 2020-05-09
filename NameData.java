@@ -1,14 +1,14 @@
 public class NameData {
 
 	private String year;
-	private String givenName;
+	private String name;
 	private String gender;
 	private int numBabies;
 
 	public NameData(String year, String name, String gender,
 			int number) {
 		this.year = year;
-		this.givenName = name;
+		this.name = name;
 		this.gender = gender;
 		this.numBabies = number;
 	}
@@ -17,8 +17,8 @@ public class NameData {
 		return year;
 	}
 
-	public String getGivenName() {
-		return givenName;
+	public String getName() {
+		return name;
 	}
 
 	public String getGender() {
@@ -31,7 +31,7 @@ public class NameData {
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder("{");
-		sb.append(getGivenName()+" (");
+		sb.append(getName()+" (");
 		sb.append(getYear()+", "+getGender()+"): ");
 		sb.append(getNumBabies()+"}");
 		return sb.toString();
