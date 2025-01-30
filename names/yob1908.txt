@@ -114,7 +114,7 @@ Wilma,F,630
 Lola,F,623
 Lucile,F,592
 Lottie,F,580
-Marian,F,579
+Marian,F,578
 Juanita,F,572
 Loretta,F,566
 Mable,F,566
@@ -953,7 +953,6 @@ Ether,F,18
 Eveline,F,18
 Floretta,F,18
 Isla,F,18
-Laurie,F,18
 Lynn,F,18
 Margarete,F,18
 Marianna,F,18
@@ -985,6 +984,7 @@ Jessica,F,17
 Jossie,F,17
 Launa,F,17
 Laurette,F,17
+Laurie,F,17
 Leda,F,17
 Leoma,F,17
 Libbie,F,17
@@ -2432,8 +2432,8 @@ Zela,F,5
 Zephyr,F,5
 Zetha,F,5
 Zylpha,F,5
-John,M,9342
-William,M,7528
+John,M,9343
+William,M,7529
 James,M,7012
 George,M,4584
 Robert,M,4219
@@ -2910,7 +2910,6 @@ Bertram,M,27
 Bruno,M,27
 Bryan,M,27
 Elzie,M,27
-Gary,M,27
 General,M,27
 Junior,M,27
 Linwood,M,27
@@ -2923,6 +2922,7 @@ Rodney,M,27
 Rosevelt,M,27
 Arlie,M,26
 Clint,M,26
+Gary,M,26
 Granville,M,26
 Gregory,M,26
 Haywood,M,26

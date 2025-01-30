@@ -38,8 +38,8 @@ Eva,F,1727
 Elsie,F,1720
 Sarah,F,1710
 Agnes,F,1676
-Josephine,F,1566
 Nellie,F,1566
+Josephine,F,1565
 Laura,F,1559
 Lillie,F,1533
 Ella,F,1525
@@ -120,7 +120,7 @@ Mable,F,478
 Goldie,F,473
 Estelle,F,472
 Addie,F,469
-Eula,F,466
+Eula,F,465
 Loretta,F,461
 Lela,F,459
 Caroline,F,452
@@ -399,8 +399,8 @@ Avis,F,61
 Carmela,F,61
 Dona,F,60
 Beryl,F,59
-Connie,F,59
 Pinkie,F,59
+Connie,F,58
 Evangeline,F,58
 Lyda,F,58
 Zola,F,58
@@ -2041,7 +2041,7 @@ Wylma,F,5
 Yolande,F,5
 Zellie,F,5
 John,M,7907
-William,M,6616
+William,M,6617
 James,M,5592
 George,M,4223
 Charles,M,3361
@@ -2054,13 +2054,13 @@ Thomas,M,2134
 Walter,M,1858
 Harry,M,1750
 Willie,M,1565
-Arthur,M,1486
+Arthur,M,1487
 Albert,M,1375
 Clarence,M,1292
 Fred,M,1286
 Harold,M,1077
 Paul,M,1067
-Raymond,M,1065
+Raymond,M,1064
 Roy,M,1002
 Joe,M,955
 Carl,M,952

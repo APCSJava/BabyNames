@@ -75,7 +75,7 @@ Effie,F,712
 Willie,F,709
 Beatrice,F,684
 Della,F,681
-Susie,F,678
+Susie,F,679
 Beulah,F,675
 Pauline,F,656
 Daisy,F,645
@@ -1700,7 +1700,7 @@ Victorine,F,5
 Walburga,F,5
 Willetta,F,5
 Zura,F,5
-John,M,8238
+John,M,8237
 William,M,7274
 James,M,5110
 George,M,4365

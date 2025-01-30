@@ -2106,8 +2106,8 @@ Orville,M,94
 Franklin,M,92
 Mark,M,92
 Nathaniel,M,92
-Matthew,M,90
 Roosevelt,M,90
+Matthew,M,89
 Irvin,M,88
 Nicholas,M,88
 Perry,M,87
@@ -2205,8 +2205,8 @@ Loren,M,44
 Marcus,M,44
 Myron,M,44
 Aubrey,M,43
-Ronald,M,43
 Boyd,M,42
+Ronald,M,42
 Carlton,M,41
 Edmond,M,41
 Levi,M,41

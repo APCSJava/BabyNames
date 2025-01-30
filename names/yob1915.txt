@@ -6,7 +6,7 @@ Ruth,F,21878
 Mildred,F,15254
 Anna,F,15119
 Elizabeth,F,14103
-Frances,F,12787
+Frances,F,12786
 Evelyn,F,11595
 Marie,F,11363
 Virginia,F,10952
@@ -40,7 +40,7 @@ Marjorie,F,5119
 Emma,F,5044
 Elsie,F,4967
 Bernice,F,4937
-Ann,F,4896
+Ann,F,4895
 Julia,F,4831
 Agnes,F,4795
 Bertha,F,4785
@@ -99,7 +99,7 @@ Maxine,F,2110
 Emily,F,2091
 Phyllis,F,2088
 Inez,F,2005
-Nancy,F,1988
+Nancy,F,1987
 Carrie,F,1968
 Kathleen,F,1940
 Fannie,F,1927
@@ -350,14 +350,14 @@ Linda,F,290
 Iola,F,289
 Gretchen,F,288
 Dolly,F,287
-Janice,F,286
+Janice,F,285
 Lou,F,285
 Philomena,F,284
 Dessie,F,283
 Catharine,F,281
 Delia,F,280
 Eddie,F,280
-Lilly,F,280
+Lilly,F,279
 Oma,F,279
 Margery,F,275
 Lelia,F,272
@@ -383,7 +383,7 @@ Yolanda,F,251
 Pearlie,F,250
 Isabell,F,249
 Jimmie,F,248
-Kay,F,244
+Kay,F,243
 Isabella,F,242
 Nona,F,242
 Elda,F,241
@@ -445,8 +445,8 @@ Winona,F,192
 Joy,F,190
 Lettie,F,190
 Evangeline,F,188
-Louisa,F,188
 Ester,F,187
+Louisa,F,187
 Vida,F,187
 Elise,F,186
 Elvera,F,186
@@ -502,8 +502,8 @@ Hettie,F,153
 Velda,F,153
 Delma,F,152
 Hedwig,F,152
-Marianne,F,152
 Magdalene,F,151
+Marianne,F,151
 Vernice,F,151
 Katheryn,F,150
 Lorine,F,149
@@ -561,8 +561,8 @@ Clementine,F,132
 Margarette,F,132
 Reta,F,132
 Hulda,F,131
-Camilla,F,130
 Margarita,F,130
+Camilla,F,129
 Claudine,F,129
 Maryann,F,129
 Theodora,F,129
@@ -638,10 +638,10 @@ Susanna,F,108
 Deloris,F,107
 Mazie,F,107
 Adella,F,106
-Deborah,F,106
 Jenny,F,106
 Melvina,F,106
 Twila,F,106
+Deborah,F,105
 Freddie,F,105
 Hilma,F,105
 Kitty,F,105
@@ -677,10 +677,10 @@ Bridget,F,95
 Claudie,F,95
 Delphia,F,95
 Grayce,F,95
+Mittie,F,95
 Mozell,F,95
 Albertha,F,94
 Georgina,F,94
-Mittie,F,94
 Verona,F,94
 Evelyne,F,93
 Gwen,F,93
@@ -1465,7 +1465,6 @@ Maebelle,F,25
 Manda,F,25
 Marry,F,25
 Mayola,F,25
-Melinda,F,25
 Omie,F,25
 Princess,F,25
 Thalia,F,25
@@ -1506,6 +1505,7 @@ Majorie,F,24
 Margrett,F,24
 Marlys,F,24
 Maryanne,F,24
+Melinda,F,24
 Murl,F,24
 Natividad,F,24
 Rafaela,F,24
@@ -1624,7 +1624,6 @@ Arabella,F,21
 Ardeth,F,21
 Arlyne,F,21
 Bee,F,21
-Brenda,F,21
 Candelaria,F,21
 Colette,F,21
 Coy,F,21
@@ -1684,6 +1683,7 @@ Averil,F,20
 Azalee,F,20
 Azzie,F,20
 Bernard,F,20
+Brenda,F,20
 Catheryn,F,20
 Classie,F,20
 Cledith,F,20
@@ -3522,7 +3522,6 @@ Doxie,F,7
 Draxie,F,7
 Drue,F,7
 Dudley,F,7
-Dulce,F,7
 Earma,F,7
 Edmee,F,7
 Eiko,F,7
@@ -3905,6 +3904,7 @@ Drucella,F,6
 Druzella,F,6
 Duane,F,6
 Dula,F,6
+Dulce,F,6
 Earlena,F,6
 Edda,F,6
 Eddis,F,6
@@ -4966,16 +4966,16 @@ Zilda,F,5
 Zoie,F,5
 Zulema,F,5
 John,M,47576
-William,M,38564
-James,M,33775
-Robert,M,28738
-Joseph,M,23052
+William,M,38563
+James,M,33773
+Robert,M,28737
+Joseph,M,23051
 George,M,22307
 Charles,M,21960
 Edward,M,15889
 Frank,M,15006
 Thomas,M,11490
-Walter,M,11256
+Walter,M,11255
 Harold,M,10444
 Paul,M,10328
 Henry,M,10138
@@ -4984,7 +4984,7 @@ Raymond,M,8981
 Albert,M,8825
 Arthur,M,8564
 Harry,M,8470
-Donald,M,7116
+Donald,M,7115
 Ralph,M,6816
 Carl,M,6613
 Louis,M,6518
@@ -4998,7 +4998,7 @@ Willie,M,5434
 David,M,5394
 Roy,M,5052
 Earl,M,4908
-Stanley,M,4808
+Stanley,M,4807
 Ernest,M,4787
 Anthony,M,4722
 Lawrence,M,4688
@@ -5006,8 +5006,8 @@ Joe,M,4648
 Samuel,M,4351
 Herbert,M,4341
 Eugene,M,4321
-Alfred,M,4232
-Michael,M,4081
+Alfred,M,4231
+Michael,M,4080
 Leonard,M,3993
 Elmer,M,3802
 Andrew,M,3573
@@ -5119,7 +5119,7 @@ Archie,M,794
 Abraham,M,790
 Otto,M,773
 Wilson,M,767
-Ronald,M,764
+Ronald,M,763
 Don,M,747
 Bill,M,746
 Douglas,M,734
@@ -5177,7 +5177,7 @@ Dennis,M,514
 Roscoe,M,505
 Grady,M,497
 Gene,M,493
-Wendell,M,491
+Wendell,M,490
 Percy,M,488
 Myron,M,484
 Owen,M,479
@@ -5244,7 +5244,7 @@ Thurman,M,318
 Tommie,M,318
 Elton,M,317
 Harrison,M,313
-Solomon,M,313
+Solomon,M,312
 Monroe,M,310
 Earle,M,307
 Marcus,M,307
@@ -5621,10 +5621,10 @@ Connie,M,79
 Evert,M,79
 Felton,M,79
 Fredric,M,79
-Gary,M,79
 Carol,M,78
 Carter,M,78
 Fritz,M,78
+Gary,M,78
 Jason,M,78
 Alberto,M,77
 Clare,M,77
@@ -6908,7 +6908,6 @@ Medford,M,15
 Melburn,M,15
 Moises,M,15
 Montgomery,M,15
-Niels,M,15
 Orbie,M,15
 Pilar,M,15
 Placido,M,15
@@ -7007,6 +7006,7 @@ Murrel,M,14
 Namon,M,14
 Natividad,M,14
 Neill,M,14
+Niels,M,14
 Orrie,M,14
 Ovila,M,14
 Reinhard,M,14

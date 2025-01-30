@@ -47,7 +47,7 @@ Viola,F,1545
 Laura,F,1508
 Ella,F,1432
 Julia,F,1426
-Evelyn,F,1371
+Evelyn,F,1372
 Lillie,F,1364
 Mattie,F,1362
 Lucille,F,1351
@@ -392,9 +392,9 @@ Rae,F,73
 Molly,F,72
 Eddie,F,70
 Ivy,F,70
-Billie,F,68
 Mittie,F,68
 Zelda,F,68
+Billie,F,67
 Artie,F,66
 Bernadine,F,66
 Eleanore,F,66
@@ -2171,8 +2171,8 @@ Robert,M,3414
 Charles,M,3406
 Joseph,M,3291
 Frank,M,2799
-Edward,M,2334
-Henry,M,2086
+Edward,M,2335
+Henry,M,2085
 Thomas,M,2057
 Walter,M,1873
 Harry,M,1722
@@ -2205,7 +2205,7 @@ Elmer,M,620
 Sam,M,603
 Alfred,M,600
 Leo,M,552
-Andrew,M,547
+Andrew,M,546
 Eugene,M,541
 Lee,M,532
 Leonard,M,508
@@ -2290,8 +2290,8 @@ Hubert,M,173
 Alex,M,169
 Isaac,M,167
 Charley,M,166
-Maurice,M,166
 Wesley,M,166
+Maurice,M,165
 Wallace,M,163
 Warren,M,163
 Otto,M,161
@@ -2327,7 +2327,7 @@ Mike,M,118
 Aaron,M,117
 Marshall,M,116
 Clifton,M,115
-Mark,M,114
+Mark,M,113
 Abraham,M,111
 Clinton,M,109
 Edmund,M,109
@@ -2893,7 +2893,6 @@ Beverly,M,11
 Brooks,M,11
 Buddie,M,11
 Buddy,M,11
-Burley,M,11
 Collins,M,11
 Connie,M,11
 Dana,M,11
@@ -2930,6 +2929,7 @@ Author,M,10
 Bailey,M,10
 Benjiman,M,10
 Bertrand,M,10
+Burley,M,10
 Caleb,M,10
 Carson,M,10
 Dawson,M,10

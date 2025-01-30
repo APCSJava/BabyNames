@@ -46,7 +46,7 @@ Ada,F,910
 Agnes,F,896
 Lula,F,891
 Dora,F,842
-Elsie,F,832
+Elsie,F,833
 Josephine,F,815
 Lucy,F,811
 Fannie,F,798
@@ -1351,7 +1351,7 @@ Lee,M,400
 Herman,M,394
 Claude,M,375
 Raymond,M,372
-Michael,M,345
+Michael,M,344
 Lewis,M,343
 Jim,M,339
 Martin,M,331
