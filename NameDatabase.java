@@ -1,15 +1,11 @@
 /***
  * Provides a source of data based on US Social Security registered
  * birth names between 1880 and 2023, inclusive.
- *
  * Source: https://www.ssa.gov/oact/babynames/limits.html
- *
- * Records are provided as NameData objects that associate a given name
+ * Records are provided as NameEntry objects that associate a given name
  * with the gender of the baby and the total number of babies assigned
  * that name during a particular year.
- *
  * K Collins, Spring 2018, revised 2025
-
  */
 
 import java.io.*;
