@@ -1,18 +1,18 @@
 public class NameEntry {
 
-	private final String year;
+	private final int year;
 	private final String name;
 	private final String gender;
 	private final int numBabies;
 
-	public NameEntry(String year, String name, String gender, int number) {
+	public NameEntry(int year, String name, String gender, int number) {
 		this.year = year;
 		this.name = name;
 		this.gender = gender;
 		this.numBabies = number;
 	}
 
-	public String getYear() {
+	public int getYear() {
 		return year;
 	}
 

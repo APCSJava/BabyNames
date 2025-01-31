@@ -20,82 +20,63 @@ import java.util.stream.Collectors;
 
 public class NameDatabase {
 
-    private static ArrayList<NameEntry> entries;
-
-    static {
-        initializeNameData();
-        //entries.sort((e1, e2) -> e1.getYear().compareTo(e2.getYear()));
-        //writeDataToFile("all_names.csv");
-    }
-
     /**
      * Collect a list of all years for which data is available.
      *
      * @return a list of years as strings
      */
-    public static ArrayList<String> getAvailableYears() {
-        List<String> collect = entries.stream().map(e -> e.getYear()).distinct().collect(Collectors.toList());
-        Collections.sort(collect);
-        return new ArrayList<>(collect);
+    public static ArrayList<Integer> getAvailableYears() {
+        ArrayList<Integer> years = new ArrayList<>();
+        File directory = new File("names/");
+        File[] files = directory.listFiles((dir, name) -> name.startsWith("yob") && name.endsWith(".txt"));
+
+        if (files != null) {
+            for (File file : files) {
+                String year = file.getName().substring(3, 7);
+                years.add(Integer.parseInt(year));
+            }
+        }
+        Collections.sort(years);
+        return years;
     }
+
 
     /**
-     * Retrieves a list of NameData entries for the given year.
+     * Retrieves a list of NameEntry instances for the given year.
      *
      * @param year of interest
-     * @return a list of NameData entries
+     * @return a list of NameEntry references
      */
-    public static ArrayList<NameEntry> getDataForYear(String year) {
-        List<NameEntry> collect = entries.stream().filter(e -> year.equals(e.getYear())).collect(Collectors.toList());
-        Collections.sort(collect, Comparator.comparingInt(NameEntry::getNumBabies));
-        Collections.reverse(collect);
-        return new ArrayList<>(collect);
-    }
+    public static ArrayList<NameEntry> getDataForYear(int year) {
+        ArrayList<NameEntry> entries = new ArrayList<>();
+        String filename = "names/yob" + year + ".txt";
 
-    public static ArrayList<NameEntry> getAllData(){
-        return new ArrayList<>(entries); // return a copy of the references to avoid data corruption
-    }
-
-    private static void initializeNameData() {
-        entries = new ArrayList<>();
-        File directory = new File(
-                NameDatabase.class.getResource("/names/").getFile());
-        File[] files = directory.listFiles(new FilenameFilter() {
-            public boolean accept(File dir, String name) {
-                return name.endsWith("txt");
+        try (Scanner scanner = new Scanner(new File(filename))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] data = line.split(",");
+                String name = data[0];
+                String gender = data[1];
+                int number = Integer.parseInt(data[2]);
+                NameEntry nd = new NameEntry(year, name, gender, number);
+                entries.add(nd);
             }
-        });
-        try {
-            assert files != null;
-            for (File f : files) {
-                String year = f.getName().substring(3,
-                        f.getName().indexOf('.'));
-                List<String> lines = Files
-                        .readAllLines(Paths.get(f.getPath()));
-                for (String line : lines) {
-                    String[] data = line.split(",");
-                    String name = data[0];
-                    String gender = data[1];
-                    int number = Integer.parseInt(data[2]);
-                    NameEntry nd = new NameEntry(year, name, gender, number);
-                    entries.add(nd);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            // File not found or other issues, return empty ArrayList
+            System.err.println("Error reading file for year " + year + ": " + e.getMessage());
         }
+        return entries;
     }
 
-    private static void writeDataToFile(String filename) {
+
+    public static void writeDataToFile(String filename, ArrayList<NameEntry> entries) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             for (NameEntry entry : entries) {
                 writer.println(entry.getYear() + "," + entry.getName() + "," +
                         entry.getGender() + "," + entry.getNumBabies());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error writing to file " + filename + ": " + e.getMessage());
         }
     }
-
-
 }
