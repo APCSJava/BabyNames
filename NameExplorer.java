@@ -7,7 +7,7 @@ public class NameExplorer {
     /**
      * Task 1. Find the most popular name for a given year.
      *
-     * @param year
+     * @param year the year in question
      * @return the name with the most occurrences
      */
     public static String mostPopularNameForYear(String year) {
@@ -18,7 +18,7 @@ public class NameExplorer {
     /**
      * Task 2. Find the most popular name for a year for the indicated gender.
      *
-     * @param year
+     * @param year the year in question
      * @param gender, "M" or "F"
      * @return the name with the most occurrences
      */
@@ -123,9 +123,11 @@ public class NameExplorer {
      */
 
     public static void main(String[] args) {
+        System.out.println("The database holds "+NameDatabase.getAllData().size()+" name entries across "+NameDatabase.getAvailableYears().size()+" years.");
         String mostPopularName1986 = mostPopularNameForYear("1986"); // Michael
         System.out.println("The most popular name in 1986 was: " + mostPopularName1986);
         String mostPopularName1986Female = mostPopularNameForYearByGender("1986", "F"); // Jessica
         System.out.println("Most popular female name in 1986: " + mostPopularName1986Female);
+
     }
 }

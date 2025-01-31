@@ -12,9 +12,7 @@
 
  */
 
-import java.io.File;
-import java.io.FilenameFilter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -26,6 +24,8 @@ public class NameDatabase {
 
     static {
         initializeNameData();
+        //entries.sort((e1, e2) -> e1.getYear().compareTo(e2.getYear()));
+        //writeDataToFile("all_names.csv");
     }
 
     /**
@@ -85,5 +85,17 @@ public class NameDatabase {
             e.printStackTrace();
         }
     }
+
+    private static void writeDataToFile(String filename) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
+            for (NameEntry entry : entries) {
+                writer.println(entry.getYear() + "," + entry.getName() + "," +
+                        entry.getGender() + "," + entry.getNumBabies());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
