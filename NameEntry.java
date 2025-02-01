@@ -2,13 +2,13 @@ public class NameEntry {
 
 	private final int year;
 	private final String name;
-	private final String gender;
+	private final String sex;
 	private final int numBabies;
 
-	public NameEntry(int year, String name, String gender, int number) {
+	public NameEntry(int year, String name, String sex, int number) {
 		this.year = year;
 		this.name = name;
-		this.gender = gender;
+		this.sex = sex;
 		this.numBabies = number;
 	}
 
@@ -20,8 +20,8 @@ public class NameEntry {
 		return name;
 	}
 
-	public String getGender() {
-		return gender;
+	public String getSex() {
+		return sex;
 	}
 
 	public int getNumBabies() {
@@ -29,6 +29,6 @@ public class NameEntry {
 	}
 	
   public String toString() {
-		return "["+ year + " " + name + " " + gender + " " + numBabies + "]";
+		return "["+ year + " " + name + " " + sex + " " + numBabies + "]";
   }
 }

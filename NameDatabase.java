@@ -3,16 +3,14 @@
  * birth names between 1880 and 2023, inclusive.
  * Source: https://www.ssa.gov/oact/babynames/limits.html
  * Records are provided as NameEntry objects that associate a given name
- * with the gender of the baby and the total number of babies assigned
- * that name during a particular year.
+ * with the sex of the baby and the total number of babies assigned
+ * that name during a particular year.  As noted in NationalReadMe.pdf,
+ * names counts are only provided when assigned to five or more babies.
  * K Collins, Spring 2018, revised 2025
  */
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class NameDatabase {
 
@@ -21,7 +19,7 @@ public class NameDatabase {
      *
      * @return a list of years as strings
      */
-    public static ArrayList<Integer> getAvailableYears() {
+    public static ArrayList<Integer> getListOfYears() {
         ArrayList<Integer> years = new ArrayList<>();
         File directory = new File("names/");
         File[] files = directory.listFiles((dir, name) -> name.startsWith("yob") && name.endsWith(".txt"));
@@ -52,24 +50,24 @@ public class NameDatabase {
                 String line = scanner.nextLine();
                 String[] data = line.split(",");
                 String name = data[0];
-                String gender = data[1];
+                String sex = data[1];
                 int number = Integer.parseInt(data[2]);
-                NameEntry nd = new NameEntry(year, name, gender, number);
-                entries.add(nd);
+                NameEntry entry = new NameEntry(year, name, sex, number);
+                entries.add(entry);
             }
         } catch (FileNotFoundException e) {
-            // File not found or other issues, return empty ArrayList
+            // File not found or other issues, print the error and return an empty ArrayList
             System.err.println("Error reading file for year " + year + ": " + e.getMessage());
         }
         return entries;
     }
 
 
-    public static void writeDataToFile(String filename, ArrayList<NameEntry> entries) {
+    public static void writeListToFile(String filename, ArrayList<NameEntry> entries) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             for (NameEntry entry : entries) {
                 writer.println(entry.getYear() + "," + entry.getName() + "," +
-                        entry.getGender() + "," + entry.getNumBabies());
+                        entry.getSex() + "," + entry.getNumBabies());
             }
         } catch (IOException e) {
             System.err.println("Error writing to file " + filename + ": " + e.getMessage());

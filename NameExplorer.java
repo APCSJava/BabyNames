@@ -1,5 +1,4 @@
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.ArrayList;
 
 public class NameExplorer {
@@ -16,35 +15,35 @@ public class NameExplorer {
     }
 
     /**
-     * Task 2. Find the most popular name for a year for the indicated gender.
+     * Task 2. Find the most popular name for a year for the indicated sex.
      *
      * @param year    the year in question
-     * @param gender, "M" or "F"
+     * @param sex, "M" or "F"
      * @return the name with the most occurrences
      */
-    public static String mostPopularNameForYearByGender(String year, String gender) {
+    public static String mostPopularNameForYearBySex(String year, String sex) {
         // TODO implement this method
         return null;
     }
 
     /**
      * Task 3. Return a count of the number of babies born in a given year, by
-     * gender.
+     * sex.
      *
      * @param year
-     * @return the number of babies born with the indicated gender
+     * @return the number of babies born with the indicated sex
      */
-    public static int numBabiesByGender(String year, String gender) {
+    public static int numBabiesByGender(String year, String sex) {
         // TODO implement this method
         return 0;
     }
 
     /**
-     * Task 4. Return a count of the total number of babies born during a given
-     * year, regardless of gender.
+     * Task 4. Return a count of the total number of named babies born during a
+     * given year, regardless of sex.
      *
      * @param year
-     * @return the number of babies born
+     * @return the number of named babies born
      */
     public static int numBabiesTotal(String year) {
         // TODO implement this method
@@ -53,7 +52,7 @@ public class NameExplorer {
 
     /**
      * Task 5. Return a list holding the top ten names for the year, in decreasing
-     * popularity, no matter the gender.
+     * popularity, no matter the sex.
      *
      * @param year
      * @return the ten most popular names
@@ -119,13 +118,14 @@ public class NameExplorer {
      * example, You might determine the percent change for each name that was NOT in
      * the top 10 the previous year and from those, identify the name that entered
      * the top 10 with the highest percentage change. Can you link this suddenly
-     * popularity to a movie, TV show, or historic event?
+     * popularity to a movie, TV show, or historic event? "Only Murders in the Building --> Mabel"
      */
 
     public static void main(String[] args) {
         String mostPopularName1986 = mostPopularNameForYear("1986"); // Michael
         System.out.println("The most popular name in 1986 was: " + mostPopularName1986);
-        String mostPopularName1986Female = mostPopularNameForYearByGender("1986", "F"); // Jessica
+        String mostPopularName1986Female = mostPopularNameForYearBySex("1986", "F"); // Jessica
         System.out.println("Most popular female name in 1986: " + mostPopularName1986Female);
+        // etc.
     }
 }
