@@ -12,7 +12,7 @@
 import java.io.*;
 import java.util.*;
 
-public class NameDatabase {
+public class FileHandler {
 
     /**
      * Collect a list of all years for which data is available.
