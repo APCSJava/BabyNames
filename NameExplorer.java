@@ -119,6 +119,17 @@ public class NameExplorer {
         // TODO implement this method
     }
 
+    /**
+     * Binary Search Challenge -- search for the given name in the provided arraylist using a binary search.
+     * Print the number of guesses and the index of the name.  Remember that in order for binary search to be
+     * successful, the entries in the list must be in sorted order.
+     * @param names a sorted arraylist
+     *   @param target a name to search for in the list
+     */
+    public static void binarySearch(ArrayList<NameEntry> names, String target) {
+        // print the index of the name and the number of guesses to locate
+    }
+
     public static void main(String[] args) {
         String mostPopularName1986 = mostPopularNameForYear("1986"); // Michael
         System.out.println("The most popular name in 1986 was: " + mostPopularName1986);
