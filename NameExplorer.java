@@ -9,7 +9,7 @@ public class NameExplorer {
      * @param year the year in question
      * @return the name with the most occurrences
      */
-    public static String mostPopularNameForYear(String year) {
+    public static String mostPopularNameForYear(int year) {
         // TODO implement this method
         return null;
     }
@@ -21,7 +21,7 @@ public class NameExplorer {
      * @param sex, "M" or "F"
      * @return the name with the most occurrences
      */
-    public static String mostPopularNameForYearBySex(String year, String sex) {
+    public static String mostPopularNameForYearBySex(int year, String sex) {
         // TODO implement this method
         return null;
     }
@@ -45,7 +45,7 @@ public class NameExplorer {
      * @param year
      * @return the number of babies born with the indicated sex
      */
-    public static int numBabiesBySex(String year, String sex) {
+    public static int numBabiesBySex(int year, String sex) {
         // TODO implement this method
         return 0;
     }
@@ -57,7 +57,7 @@ public class NameExplorer {
      * @param year
      * @return the number of named babies born
      */
-    public static int numBabiesTotal(String year) {
+    public static int numBabiesTotal(int year) {
         // TODO implement this method
         return 0;
     }
@@ -69,7 +69,7 @@ public class NameExplorer {
      * @param year
      * @return the ten most popular names
      */
-    public static ArrayList<String> topTenForYear(String year) {
+    public static ArrayList<String> topTenForYear(int year) {
         // TODO implement this method
         return null;
     }
@@ -94,7 +94,7 @@ public class NameExplorer {
      * @param nicknames a list of string names
      * @param year      the year of interest
      */
-    public static int countAsSingleName(List<String> nicknames, String year) {
+    public static int countAsSingleName(List<String> nicknames, int year) {
         // TODO implement this method
         return 0;
     }
@@ -131,9 +131,9 @@ public class NameExplorer {
     }
 
     public static void main(String[] args) {
-        String mostPopularName1986 = mostPopularNameForYear("1986"); // Michael
+        String mostPopularName1986 = mostPopularNameForYear(1986); // Michael
         System.out.println("The most popular name in 1986 was: " + mostPopularName1986);
-        String mostPopularName1986Female = mostPopularNameForYearBySex("1986", "F"); // Jessica
+        String mostPopularName1986Female = mostPopularNameForYearBySex(1986, "F"); // Jessica
         System.out.println("Most popular female name in 1986: " + mostPopularName1986Female);
 
         // In addition to implementing and testing the task methods above, research and answer the following:
