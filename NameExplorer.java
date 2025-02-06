@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -31,10 +32,10 @@ public class NameExplorer {
      *
      * @param year the year of interest
      * @param name the name to search for
-     * @param sex focus the lookup on babies of the specified sex
+     * @param sex  focus the lookup on babies of the specified sex
      * @return the number of babies given the specified name.
      */
-    public static int lookup(int year, int name, String sex) {
+    public static int lookup(int year, String name, String sex) {
         // TODO implement this method
         return 0;
     }
@@ -113,6 +114,7 @@ public class NameExplorer {
      * Task 10. Examine the list and replace names that were given to both boys and girls with a new, single
      * name entry with the summed number of babies from each.  The original entries are removed from the list and
      * the combined entry instance shows sex as "-" to indicate that the sex is no longer exclusively "M" or "F".
+     *
      * @param names a list in which to replace names given to both sexes with a single entry
      */
     public static void combineAcrossSex(ArrayList<NameEntry> names) {
@@ -123,8 +125,9 @@ public class NameExplorer {
      * Binary Search Challenge -- search for the given name in the provided arraylist using a binary search.
      * Print the number of guesses and the index of the name.  Remember that in order for binary search to be
      * successful, the entries in the list must be in sorted order.
-     * @param names a sorted arraylist
-     *   @param target a name to search for in the list
+     *
+     * @param names  a sorted arraylist
+     * @param target a name to search for in the list
      */
     public static void binarySearch(ArrayList<NameEntry> names, String target) {
         // print the index of the name and the number of guesses to locate
@@ -133,7 +136,7 @@ public class NameExplorer {
     public static void main(String[] args) {
         String mostPopularName1986 = mostPopularNameForYear(1986); // Michael
         System.out.println("The most popular name in 1986 was: " + mostPopularName1986);
-        String mostPopularName1986Female = mostPopularNameForYearBySex(1986, "F"); // Jessica
+        String mostPopularName1986Female = mostPopularNameForYearBySex(1986, "M"); // Jessica
         System.out.println("Most popular female name in 1986: " + mostPopularName1986Female);
 
         // In addition to implementing and testing the task methods above, research and answer the following:
