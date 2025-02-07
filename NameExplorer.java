@@ -1,5 +1,3 @@
-import java.util.Collections;
-import java.util.List;
 import java.util.ArrayList;
 
 public class NameExplorer {
@@ -8,32 +6,32 @@ public class NameExplorer {
      * Task 1. Find the most popular name for a given year.
      *
      * @param year the year in question
-     * @return the name with the most occurrences
+     * @return the name assigned to the most babies
      */
-    public static String mostPopularNameForYear(int year) {
+    public static String annualMostPopularName(int year) {
         // TODO implement this method
         return null;
     }
 
     /**
-     * Task 2. Find the most popular name for a year for the indicated sex.
+     * Task 2. Find the most popular name assigned to a baby of the indicated sex
      *
      * @param year the year in question
      * @param sex, "M" or "F"
      * @return the name with the most occurrences
      */
-    public static String mostPopularNameForYearBySex(int year, String sex) {
+    public static String annualMostPopularName(int year, String sex) {
         // TODO implement this method
         return null;
     }
 
     /**
-     * Task 3. Look up the number of babies of the specified sex with the given name.
+     * Task 3. Finds a NameEntry matching the requested year, name and sex.
      *
      * @param year the year of interest
      * @param name the name to search for
      * @param sex  focus the lookup on babies of the specified sex
-     * @return the number of babies given the specified name.
+     * @return a reference to the name entry object or null if not match found
      */
     public static int lookup(int year, String name, String sex) {
         // TODO implement this method
@@ -41,12 +39,12 @@ public class NameExplorer {
     }
 
     /**
-     * Task 4. Return a count of all babies born of a specific sex in a given year.
+     * Task 4. Return the total number of babies of the given sex for the year.
      *
      * @param year
      * @return the number of babies born with the indicated sex
      */
-    public static int numBabiesBySex(int year, String sex) {
+    public static int annualBabyCount(int year, String sex) {
         // TODO implement this method
         return 0;
     }
@@ -58,7 +56,7 @@ public class NameExplorer {
      * @param year
      * @return the number of named babies born
      */
-    public static int numBabiesTotal(int year) {
+    public static int annualBabyCount(int year) {
         // TODO implement this method
         return 0;
     }
@@ -76,7 +74,31 @@ public class NameExplorer {
     }
 
     /**
-     * Task 7.  Find the year in which the given name was most popular.
+     * Task 7. Often, several names might be considered nicknames for a common name.
+     * For example, "William", "Will", "Bill", "Billy", "Willie", and "Willy" are
+     * all derived from the base name "William". Write a method that accepts an
+     * array/list of names (strings) and returns the total count for all.
+     *
+     * @param nicknames a list of string names
+     * @param year      the year of interest
+     */
+    public static int countAsSingleName(ArrayList<String> nicknames, int year) {
+        // TODO implement this method
+        return 0;
+    }
+
+    /**
+     * Task 8. Returns an arraylist holding name entries for all years for which data
+     * is available.
+     *
+     * @return combined name entry data from all available years
+     */
+    public static ArrayList<NameEntry> retrieveAllYears() {
+        return null;
+    }
+
+    /**
+     * Task 9.  Find the year in which a given name was most popular.
      *
      * @param name of interest
      * @return the NameEntry object of the year that name was most popular
@@ -87,25 +109,11 @@ public class NameExplorer {
     }
 
     /**
-     * Task 8. Often, several names might be considered nicknames for a common name.
-     * For example, "William", "Will", "Bill", "Billy", "Willie", and "Willy" are
-     * all derived from the base name "William". Write a method that accepts an
-     * array/list of names (strings) and returns the total count for all.
+     * Task 10. Determine the name assigned to the most babies across all years
+     * for which data is available.
      *
-     * @param nicknames a list of string names
-     * @param year      the year of interest
      */
-    public static int countAsSingleName(List<String> nicknames, int year) {
-        // TODO implement this method
-        return 0;
-    }
-
-    /**
-     * Task 9. Determine the most popular name ever given that starts with the specified letter.
-     *
-     * @param startingLetter the letter of interest
-     */
-    public static String mostPopularStartingWith(String startingLetter) {
+    public static String mostPopularNameEver() {
         // TODO implement this method
         return null;
     }
@@ -134,10 +142,9 @@ public class NameExplorer {
     }
 
     public static void main(String[] args) {
-        String mostPopularName1986 = mostPopularNameForYear(1986); // Michael
-        System.out.println("The most popular name in 1986 was: " + mostPopularName1986);
-        String mostPopularName1986Female = mostPopularNameForYearBySex(1986, "M"); // Jessica
-        System.out.println("Most popular female name in 1986: " + mostPopularName1986Female);
+        // Test cases and expected values
+        System.out.println(annualMostPopularName(1986)); // Michael
+        System.out.println(annualMostPopularName(1986, "F")); // Jessica
 
         // In addition to implementing and testing the task methods above, research and answer the following:
         // Q1 - do boys or girls have more diverse naming?
