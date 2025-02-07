@@ -11,8 +11,15 @@ public class NameExplorer {
      * @return the name with the most occurrences
      */
     public static String mostPopularNameForYear(int year) {
-        // TODO implement this method
-        return null;
+        ArrayList<NameEntry> dataForYear = FileHandler.getDataForYear(year);
+        NameEntry bestEntry = dataForYear.get(0);
+        for (int i = 1; i < dataForYear.size(); i++) {
+            NameEntry currentEntry = dataForYear.get(i);
+            if (currentEntry.getNumBabies() > bestEntry.getNumBabies()) {
+                bestEntry = currentEntry;
+            }
+        }
+        return bestEntry.getName();
     }
 
     /**
@@ -23,8 +30,16 @@ public class NameExplorer {
      * @return the name with the most occurrences
      */
     public static String mostPopularNameForYearBySex(int year, String sex) {
-        // TODO implement this method
-        return null;
+        ArrayList<NameEntry> dataForYear = FileHandler.getDataForYear(year);
+        NameEntry bestEntry = dataForYear.get(0);
+        for (NameEntry currentEntry : dataForYear) {
+            if (currentEntry.getSex().equals(sex)) {
+                if (currentEntry.getNumBabies() > bestEntry.getNumBabies()) {
+                    bestEntry = currentEntry;
+                }
+            }
+        }
+        return bestEntry.getName();
     }
 
     /**
@@ -36,7 +51,12 @@ public class NameExplorer {
      * @return the number of babies given the specified name.
      */
     public static int lookup(int year, String name, String sex) {
-        // TODO implement this method
+        ArrayList<NameEntry> dataForYear = FileHandler.getDataForYear(year);
+        for (NameEntry currentEntry : dataForYear) {
+            if (name.equals(currentEntry.getName()) && sex.equals(currentEntry.getSex())) {
+                return currentEntry.getNumBabies();
+            }
+        }
         return 0;
     }
 
@@ -47,8 +67,14 @@ public class NameExplorer {
      * @return the number of babies born with the indicated sex
      */
     public static int numBabiesBySex(int year, String sex) {
-        // TODO implement this method
-        return 0;
+        int count = 0;
+        ArrayList<NameEntry> dataForYear = FileHandler.getDataForYear(year);
+        for (NameEntry currentEntry : dataForYear) {
+            if (sex.equals(currentEntry.getSex())) {
+                count += currentEntry.getNumBabies();
+            }
+        }
+        return count;
     }
 
     /**
@@ -59,8 +85,12 @@ public class NameExplorer {
      * @return the number of named babies born
      */
     public static int numBabiesTotal(int year) {
-        // TODO implement this method
-        return 0;
+        ArrayList<NameEntry> dataForYear = FileHandler.getDataForYear(year);
+        int total = 0;
+        for (NameEntry currentEntry : dataForYear) {
+            total += currentEntry.getNumBabies();
+        }
+        return total;
     }
 
     /**
@@ -71,8 +101,20 @@ public class NameExplorer {
      * @return the ten most popular names
      */
     public static ArrayList<String> topTenForYear(int year) {
-        // TODO implement this method
-        return null;
+        ArrayList<NameEntry> dataForYear = FileHandler.getDataForYear(year);
+        ArrayList<String> top10 = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            NameEntry mostPopularEntry = dataForYear.get(0);
+            for (int j = 0; j < dataForYear.size(); j++) {
+                NameEntry currentEntry = dataForYear.get(j);
+                if (currentEntry.getNumBabies() > mostPopularEntry.getNumBabies()) {
+                    mostPopularEntry = currentEntry;
+                }
+            }
+            top10.add(mostPopularEntry.getName());
+            dataForYear.remove(mostPopularEntry); // don't want to find it again
+        }
+        return top10;
     }
 
     /**
@@ -82,8 +124,19 @@ public class NameExplorer {
      * @return the NameEntry object of the year that name was most popular
      */
     public static NameEntry getMostPopularYear(String name) {
-        // TODO implement this method
-        return null;
+        ArrayList<NameEntry> completeList = new ArrayList<>();
+        for (int year : FileHandler.getListOfYears()) {
+            completeList.addAll(FileHandler.getDataForYear(year));
+        }
+        NameEntry mostPopularEntry = null;
+        for (NameEntry currentEntry : completeList) {
+            if (currentEntry.getName().equals(name)) {
+                if (mostPopularEntry == null || currentEntry.getNumBabies() > mostPopularEntry.getNumBabies()) {
+                    mostPopularEntry = currentEntry;
+                }
+            }
+        }
+        return mostPopularEntry;
     }
 
     /**
@@ -96,8 +149,13 @@ public class NameExplorer {
      * @param year      the year of interest
      */
     public static int countAsSingleName(List<String> nicknames, int year) {
-        // TODO implement this method
-        return 0;
+        int total = 0;
+        ArrayList<NameEntry> dataForYear = FileHandler.getDataForYear(year);
+        for (String nickname : nicknames) {
+            total += lookup(year, nickname, "M");
+            total += lookup(year, nickname, "F");
+        }
+        return total;
     }
 
     /**
@@ -106,8 +164,22 @@ public class NameExplorer {
      * @param startingLetter the letter of interest
      */
     public static String mostPopularStartingWith(String startingLetter) {
-        // TODO implement this method
-        return null;
+        ArrayList<NameEntry> completeList = new ArrayList<>();
+        for (int year : FileHandler.getListOfYears()) {
+            completeList.addAll(FileHandler.getDataForYear(year));
+        }
+        NameEntry mostPopularEntry = null;
+        for (NameEntry currentEntry : completeList) {
+            if (startingLetter.equals(currentEntry.getName().substring(0, 1))) {
+                if (mostPopularEntry == null) {
+                    mostPopularEntry = currentEntry;
+                }
+                if (currentEntry.getNumBabies() > mostPopularEntry.getNumBabies()) {
+                    mostPopularEntry = currentEntry;
+                }
+            }
+        }
+        return mostPopularEntry.getName();
     }
 
     /**
@@ -115,10 +187,31 @@ public class NameExplorer {
      * name entry with the summed number of babies from each.  The original entries are removed from the list and
      * the combined entry instance shows sex as "-" to indicate that the sex is no longer exclusively "M" or "F".
      *
-     * @param names a list in which to replace names given to both sexes with a single entry
+     * @param year the year to affect
+     * @param name a list in which to replace names given to both sexes with a single entry
      */
-    public static void combineAcrossSex(ArrayList<NameEntry> names) {
-        // TODO implement this method
+    public static void combineAcrossSex(String name, int year) {
+        NameEntry male = null;
+        NameEntry female = null;
+        ArrayList<NameEntry> dataForYear = FileHandler.getDataForYear(year);
+        for (int i = 0; i < dataForYear.size(); i++) {
+            NameEntry currentEntry = dataForYear.get(i);
+            if (currentEntry.getName().equals(name)) {
+                if (currentEntry.getSex().equals("M")) {
+                    male = currentEntry;
+                    dataForYear.remove(i);
+                    i--;
+                } else if (currentEntry.getSex().equals("F")) {
+                    female = currentEntry;
+                    dataForYear.remove(i);
+                    i--;
+                }
+            }
+        }
+        if (male != null && female != null) {
+            NameEntry combined = new NameEntry(year, name, "-", male.getNumBabies()+female.getNumBabies());
+            dataForYear.add(combined);
+        }
     }
 
     /**
@@ -138,6 +231,27 @@ public class NameExplorer {
         System.out.println("The most popular name in 1986 was: " + mostPopularName1986);
         String mostPopularName1986Female = mostPopularNameForYearBySex(1986, "M"); // Jessica
         System.out.println("Most popular female name in 1986: " + mostPopularName1986Female);
+        int lookup = lookup(1986, "Michael", "M");
+        System.out.println("Lookup Michael in 1986: " + lookup); // 64227
+        int maleBabyCount1986 = numBabiesBySex(1986, "M");
+        System.out.println(maleBabyCount1986); // 1841466
+        int totalBabyCount1986 = numBabiesTotal(1986);
+        System.out.println(totalBabyCount1986); // 3556946
+        ArrayList<String> topTenForYear = topTenForYear(1986);
+        System.out.println(topTenForYear); // [Michael, Christopher, Jessica, Ashley, Matthew, Amanda, Joshua, David, Daniel, Jennifer]
+        NameEntry mpy = getMostPopularYear("Michael");
+        System.out.println(mpy); // [1957 Michael M 92777]
+        ArrayList<String> collectedNames = new ArrayList<>();
+        collectedNames.add("Michael");
+        collectedNames.add("Mike");
+        collectedNames.add("Mikey");
+        int numMikes = countAsSingleName(collectedNames, 1986);
+        System.out.println(numMikes); // 65146
+        String nameX = mostPopularStartingWith("X");
+        System.out.println(nameX); // Xavier
+        combineAcrossSex("Michael", 1986);
+
+
 
         // In addition to implementing and testing the task methods above, research and answer the following:
         // Q1 - do boys or girls have more diverse naming?
