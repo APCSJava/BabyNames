@@ -33,9 +33,9 @@ public class NameExplorer {
      * @param sex  focus the lookup on babies of the specified sex
      * @return a reference to the name entry object or null if not match found
      */
-    public static int lookup(int year, String name, String sex) {
+    public static NameEntry lookup(int year, String name, String sex) {
         // TODO implement this method
-        return 0;
+        return null;
     }
 
     /**
@@ -82,7 +82,7 @@ public class NameExplorer {
      * @param nicknames a list of string names
      * @param year      the year of interest
      */
-    public static int countAsSingleName(ArrayList<String> nicknames, int year) {
+    public static int tallyAsSingleName(ArrayList<String> nicknames, int year) {
         // TODO implement this method
         return 0;
     }
@@ -103,30 +103,33 @@ public class NameExplorer {
      * @param name of interest
      * @return the NameEntry object of the year that name was most popular
      */
-    public static NameEntry getMostPopularYear(String name) {
+    public static NameEntry mostPopularYearForName(String name) {
         // TODO implement this method
         return null;
     }
 
     /**
-     * Task 10. Determine the name assigned to the most babies across all years
+     * Task 10. Determine the most popular entry across all years
      * for which data is available.
      *
      */
-    public static String mostPopularNameEver() {
+    public static NameEntry mostPopularEntry() {
         // TODO implement this method
         return null;
     }
 
     /**
-     * Task 10. Examine the list and replace names that were given to both boys and girls with a new, single
-     * name entry with the summed number of babies from each.  The original entries are removed from the list and
-     * the combined entry instance shows sex as "-" to indicate that the sex is no longer exclusively "M" or "F".
+     * Task 11. If the name is assigned to both girls and boys, replace the original entries
+     * with a new, single entry having the same total number of babies.  The original entries
+     * are removed from the list and replaced with the combined entry.  The sex attribute
+     * for the combined entry is presented as "X" in place of "M" or "F".
      *
-     * @param names a list in which to replace names given to both sexes with a single entry
+     * @param name the name assigned
+     * @return a reference to the newly created merged name object
      */
-    public static void combineAcrossSex(ArrayList<NameEntry> names) {
+    public static NameEntry mergeNameBetweenSexes(String name, int year) {
         // TODO implement this method
+        return null; // if no merging occurs (i.e. name not found or not assigned to both sexes)
     }
 
     /**
@@ -145,6 +148,18 @@ public class NameExplorer {
         // Test cases and expected values
         System.out.println(annualMostPopularName(1986)); // Michael
         System.out.println(annualMostPopularName(1986, "F")); // Jessica
+        System.out.println(lookup(1986, "Michael", "M")); // [1986 Michael M 64227]
+        System.out.println(annualBabyCount(1986, "M")); // 1841466
+        System.out.println(annualBabyCount(1986)); // 3556946
+        System.out.println(topTenForYear(1986)); // [Michael, Christopher, Jessica, Ashley, Matthew, Amanda, Joshua, David, Daniel, Jennifer]
+        System.out.println(retrieveAllYears().size()); //
+        System.out.println(mostPopularYearForName("Michael")); // [1957 Michael M 92777]
+        ArrayList<String> collectedNames = new ArrayList<>();
+        collectedNames.add("Michael");
+        collectedNames.add("Mike");
+        collectedNames.add("Mikey");
+        System.out.println(tallyAsSingleName(collectedNames, 1986)); // 65146
+        mergeNameBetweenSexes("Michael", 1986); // [1986 Michael X ???]
 
         // In addition to implementing and testing the task methods above, research and answer the following:
         // Q1 - do boys or girls have more diverse naming?
