@@ -1,4 +1,8 @@
+import javax.naming.Name;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class NameExplorer {
 
@@ -9,8 +13,12 @@ public class NameExplorer {
      * @return the name assigned to the most babies
      */
     public static String annualMostPopularName(int year) {
-        // TODO implement this method
-        return null;
+        return FileHandler.getDataForYear(year).stream()
+                .sorted((e1, e2) -> e2.getNumBabies() - e1.getNumBabies())
+                .limit(1)
+                .toList()
+                .getFirst()
+                .getName();
     }
 
     /**
@@ -21,8 +29,13 @@ public class NameExplorer {
      * @return the name with the most occurrences
      */
     public static String annualMostPopularName(int year, String sex) {
-        // TODO implement this method
-        return null;
+        return FileHandler.getDataForYear(year).stream()
+                .filter(e->e.getSex().equals(sex))
+                .sorted((e1, e2)-> e2.getNumBabies()-e1.getNumBabies())
+                .limit(1)
+                .toList()
+                .getFirst()
+                .getName();
     }
 
     /**
@@ -34,8 +47,12 @@ public class NameExplorer {
      * @return a reference to the name entry object or null if not match found
      */
     public static NameEntry lookup(int year, String name, String sex) {
-        // TODO implement this method
-        return null;
+
+        return FileHandler.getDataForYear(year).stream()
+                .filter(e->e.getName().equals(name))
+                .filter(e-> e.getSex().equals(sex))
+                .toList()
+                .getFirst();
     }
 
     /**
@@ -45,8 +62,10 @@ public class NameExplorer {
      * @return the number of babies born with the indicated sex
      */
     public static int annualBabyCount(int year, String sex) {
-        // TODO implement this method
-        return 0;
+        return FileHandler.getDataForYear(year).stream()
+                .filter(e->e.getSex().equals(sex))
+                .mapToInt(NameEntry::getNumBabies)
+                .sum();
     }
 
     /**
@@ -57,8 +76,9 @@ public class NameExplorer {
      * @return the number of named babies born
      */
     public static int annualBabyCount(int year) {
-        // TODO implement this method
-        return 0;
+       return FileHandler.getDataForYear(year).stream()
+               .mapToInt(NameEntry::getNumBabies)
+               .sum();
     }
 
     /**
@@ -69,8 +89,11 @@ public class NameExplorer {
      * @return the ten most popular names
      */
     public static ArrayList<String> topTenForYear(int year) {
-        // TODO implement this method
-        return null;
+        return  new ArrayList<>(FileHandler.getDataForYear(year).stream()
+                .sorted((e1, e2)-> e2.getNumBabies()-e1.getNumBabies())
+                .limit(10)
+                .map(NameEntry::getName)
+                .toList());
     }
 
     /**
@@ -83,8 +106,10 @@ public class NameExplorer {
      * @param year      the year of interest
      */
     public static int tallyAsSingleName(ArrayList<String> nicknames, int year) {
-        // TODO implement this method
-        return 0;
+        return FileHandler.getDataForYear(year).stream()
+                .filter(e->nicknames.contains(e.getName()))
+                .mapToInt(NameEntry::getNumBabies)
+                .sum();
     }
 
     /**
@@ -94,7 +119,10 @@ public class NameExplorer {
      * @return combined name entry data from all available years
      */
     public static ArrayList<NameEntry> retrieveAllYears() {
-        return null;
+        return FileHandler.getListOfYears().stream()
+                .forEach(y->FileHandler.getDataForYear(y).stream()
+                        );
+
     }
 
     /**
@@ -152,14 +180,14 @@ public class NameExplorer {
         System.out.println(annualBabyCount(1986, "M")); // 1841466
         System.out.println(annualBabyCount(1986)); // 3556946
         System.out.println(topTenForYear(1986)); // [Michael, Christopher, Jessica, Ashley, Matthew, Amanda, Joshua, David, Daniel, Jennifer]
-        System.out.println(retrieveAllYears().size()); //
+        System.out.println(retrieveAllYears()); //
         System.out.println(mostPopularYearForName("Michael")); // [1957 Michael M 92777]
         ArrayList<String> collectedNames = new ArrayList<>();
         collectedNames.add("Michael");
         collectedNames.add("Mike");
         collectedNames.add("Mikey");
         System.out.println(tallyAsSingleName(collectedNames, 1986)); // 65146
-        mergeNameBetweenSexes("Michael", 1986); // [1986 Michael X ???]
+        System.out.println(mergeNameBetweenSexes("Michael", 1986)); // [1986 Michael X ???]
 
         // In addition to implementing and testing the task methods above, research and answer the following:
         // Q1 - do boys or girls have more diverse naming?
