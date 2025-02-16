@@ -1,8 +1,6 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class NameExplorer {
 
@@ -14,11 +12,9 @@ public class NameExplorer {
      */
     public static String annualMostPopularName(int year) {
         return FileHandler.getDataForYear(year).stream()
-                .sorted((e1, e2) -> e2.getNumBabies() - e1.getNumBabies())
-                .limit(1)
-                .toList()
-                .getFirst()
-                .getName();
+                .max(Comparator.comparingInt(NameEntry::getNumBabies))
+                .map(NameEntry::getName)
+                .orElseThrow(()-> new RuntimeException("No name found for year " + year));
     }
 
     /**
@@ -31,11 +27,9 @@ public class NameExplorer {
     public static String annualMostPopularName(int year, String sex) {
         return FileHandler.getDataForYear(year).stream()
                 .filter(e -> e.getSex().equals(sex))
-                .sorted((e1, e2) -> e2.getNumBabies() - e1.getNumBabies())
-                .limit(1)
-                .toList()
-                .getFirst()
-                .getName();
+                .max(Comparator.comparingInt(NameEntry::getNumBabies))
+                .map(NameEntry::getName)
+                .orElseThrow(() -> new RuntimeException("No name found for year " + year + "and sex "+sex));
     }
 
     /**
@@ -215,8 +209,48 @@ public class NameExplorer {
 
         // In addition to implementing and testing the task methods above, research and answer the following:
         // Q1 - do boys or girls have more diverse naming?
-        // Q2 - is there a difference in average name length between boys and girls?
-        // Q3 - what have proven to be the most popular names over time?
+        FileHandler.getDataForYear(2023).stream()
+                .collect(Collectors.groupingBy(NameEntry::getSex))
+                .forEach((key, value) -> System.out.println(key + ": " + value.size()));
 
+        // Q2 - is there a difference in average name length between boys and girls?
+        Map<String, Double> avgLengths = FileHandler.getDataForYear(1964).stream()
+                .collect(Collectors.groupingBy(
+                        NameEntry::getSex,
+                        Collectors.averagingDouble(e -> e.getName().length())
+                ));
+
+        double maleAvg = avgLengths.getOrDefault("M", 0.0);
+        double femaleAvg = avgLengths.getOrDefault("F", 0.0);
+        System.out.printf("Average name length - Male: %.2f, Female: %.2f | Difference: %.2f%n",
+                maleAvg, femaleAvg, Math.abs(maleAvg - femaleAvg));
+
+        // Q3 - what have proven to be the most popular names over time?
+        retrieveAllYears().stream()
+                .collect(Collectors.groupingBy(
+                        NameEntry::getYear,
+                        Collectors.collectingAndThen(
+                                Collectors.maxBy(Comparator.comparingInt(NameEntry::getNumBabies)),
+                                entry -> entry.get().getName()
+                        )
+                )).forEach((k,v) -> System.out.println(k+":\t"+v));
+
+        // Q4 - what are common long names?
+        retrieveAllYears().stream()
+                .filter(e->e.getNumBabies()>10)
+                .map(NameEntry::getName)
+                .distinct()
+                .sorted(Comparator.comparingInt(String::length).reversed())
+                .limit(20)
+                .forEach(System.out::println);
+
+        // Q5 - what are the relative frequencies of name length?
+        retrieveAllYears().stream()
+                .collect(Collectors.groupingBy(e->e.getName().length(),Collectors.counting()))
+                .entrySet().stream().sorted(Comparator.comparing(Map.Entry<Integer, Long>::getValue).reversed())
+                //.forEach(e -> System.out.println(e.getKey()+": "+e.getValue()));
+                .forEach(System.out::println);
     }
+
+
 }
