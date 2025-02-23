@@ -113,9 +113,23 @@ public class NameExplorer {
      * @return combined name entry data from all available years
      */
     public static ArrayList<NameEntry> retrieveAllYears() {
-        return FileHandler.getListOfYears().stream()
+        System.out.println("Retrieving all years");
+        long startTime = System.currentTimeMillis();
+        ArrayList<NameEntry> collect = FileHandler.getListOfYears().stream()
                 .flatMap(y -> FileHandler.getDataForYear(y).stream())
                 .collect(Collectors.toCollection(ArrayList::new));
+        System.out.println("Completed in " + (System.currentTimeMillis() - startTime) + " ms");
+        return collect;
+    }
+
+    public static ArrayList<NameEntry> retrieveAllYearsParallel() {
+        System.out.println("Retrieving all years in parallel");
+        long startTime = System.currentTimeMillis();
+        ArrayList<NameEntry> collect = FileHandler.getListOfYears().parallelStream()  // Parallel year processing
+                .flatMap(y -> FileHandler.getDataForYear(y).parallelStream()) // Parallel per-year
+                .collect(Collectors.toCollection(ArrayList::new));
+        System.out.println("Completed in parallel in " + (System.currentTimeMillis() - startTime) + " ms");
+        return collect;
     }
 
     /**
@@ -207,6 +221,10 @@ public class NameExplorer {
         System.out.println("Task 11: " + mergeNameBetweenSexes("Michael", 1986));
         // Task 11: [1986 Michael X 64817]
 
+        ArrayList<NameEntry> nameEntries = retrieveAllYears();
+        ArrayList<NameEntry> parallelEntries = retrieveAllYearsParallel();
+
+
         // In addition to implementing and testing the task methods above, research and answer the following:
         // Q1 - do boys or girls have more diverse naming?
         FileHandler.getDataForYear(2023).stream()
@@ -226,7 +244,7 @@ public class NameExplorer {
                 maleAvg, femaleAvg, Math.abs(maleAvg - femaleAvg));
 
         // Q3 - what have proven to be the most popular names over time?
-        retrieveAllYears().stream()
+        nameEntries.stream()
                 .collect(Collectors.groupingBy(
                         NameEntry::getYear,
                         Collectors.collectingAndThen(
@@ -236,7 +254,7 @@ public class NameExplorer {
                 )).forEach((k,v) -> System.out.println(k+":\t"+v));
 
         // Q4 - what are common long names?
-        retrieveAllYears().stream()
+        nameEntries.stream()
                 .filter(e->e.getNumBabies()>10)
                 .map(NameEntry::getName)
                 .distinct()
@@ -245,11 +263,12 @@ public class NameExplorer {
                 .forEach(System.out::println);
 
         // Q5 - what are the relative frequencies of name length?
-        retrieveAllYears().stream()
+        nameEntries.stream()
                 .collect(Collectors.groupingBy(e->e.getName().length(),Collectors.counting()))
                 .entrySet().stream().sorted(Comparator.comparing(Map.Entry<Integer, Long>::getValue).reversed())
                 //.forEach(e -> System.out.println(e.getKey()+": "+e.getValue()));
                 .forEach(System.out::println);
+
     }
 
 
