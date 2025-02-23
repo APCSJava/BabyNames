@@ -269,6 +269,23 @@ public class NameExplorer {
                 //.forEach(e -> System.out.println(e.getKey()+": "+e.getValue()));
                 .forEach(System.out::println);
 
+        // Q6 - what are popular unisex names from 2020?
+        List<String> collect = FileHandler.getDataForYear(2020).stream()
+                .filter(e->e.getNumBabies()>1000)
+                .collect(Collectors.groupingBy(
+                        NameEntry::getName,
+                        Collectors.mapping(NameEntry::getSex, Collectors.toSet())
+                ))
+                .entrySet().stream()
+                .filter(entry -> entry.getValue().containsAll(Set.of("M", "F")))
+                .map(Map.Entry::getKey)
+                .sorted()
+                .toList();
+
+        System.out.println(collect);
+
+
+
     }
 
 
