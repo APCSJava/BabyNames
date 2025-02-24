@@ -14,7 +14,7 @@ public class NameExplorer {
         return FileHandler.getDataForYear(year).stream()
                 .max(Comparator.comparingInt(NameEntry::getNumBabies))
                 .map(NameEntry::getName)
-                .orElseThrow(()-> new RuntimeException("No name found for year " + year));
+                .orElse("No name found for year " + year);
     }
 
     /**
